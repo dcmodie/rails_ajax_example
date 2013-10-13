@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<div id=main>
+  <%= form_for(@high_score) do |f| %>
+      <div id="dataset_label">Dataset: &nbsp;&nbsp;</div> <div id="dataset_display"></div>
+      <p id="new">Click for new plot</p>
+      <p>
+        <b>Report:</b>
+        <%= @high_score.score %>
+      </p>
+      <input type="hidden" id="this_id" value=<%= "#{@high_score.id}" %>>
+      <%= button_tag 'get new data', :id=>'update_data', :name=>"#{@high_score.id}" %>
+
+        <a href="/high_scores/<%=@high_score.id%>/edit"> … </a>
+      <br/>
+      <br/>
+      <br/>
+      <%= link_to 'home',  '/' %>
+      </form>
+    </div>
+  <%  end%>
+
+<script type="text/javascript">
+    $(function(){
+        var dataset = <%= @dataset %>;
+        init(dataset);
+    });
+
+</script>
